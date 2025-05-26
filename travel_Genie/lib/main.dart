@@ -10,7 +10,7 @@ class TravelGenie extends StatelessWidget{
    return MaterialApp(
      title: 'Travel Genie',
      theme: ThemeData(
-       fontFamily: 'PRegular'
+       fontFamily: 'PRegulars',
      ),
      home: SplashScreen(),
      debugShowCheckedModeBanner: false,

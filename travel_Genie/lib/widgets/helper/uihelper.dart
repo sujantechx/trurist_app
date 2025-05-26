@@ -6,12 +6,14 @@ class UiHelper{
   static CustomButtom({required VoidCallback callback, required String buttonName}){
     return SizedBox(
       height: 45,
+      width: double.infinity,
       // width: double.infinity,
       child: ElevatedButton(onPressed: (){
         callback();
       },
           style: ElevatedButton.styleFrom(
             backgroundColor:ColorConstant.skyBlue,
+            padding: EdgeInsets.symmetric(vertical: 14),
             shape: RoundedRectangleBorder(
                borderRadius: BorderRadius.circular(15)
             )
