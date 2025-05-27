@@ -85,7 +85,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         children: [
                           Expanded(
                               child: ElevatedButton(onPressed: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
                               }, child: Text('Login',style: TextStyle(color: ColorConstant.white,fontSize: 15),),
                                 style: ElevatedButton.styleFrom(backgroundColor: ColorConstant.skyBlue,
                                     shape: RoundedRectangleBorder(
@@ -97,7 +97,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           SizedBox(width: 20,),
                           Expanded(
                               child: ElevatedButton(onPressed: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => SignupScreen(),));
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignupScreen(),));
 
                               }, child: Text('Sign up',style: TextStyle(color: ColorConstant.black,fontSize: 15),),
                                 style: ElevatedButton.styleFrom(backgroundColor: ColorConstant.white,

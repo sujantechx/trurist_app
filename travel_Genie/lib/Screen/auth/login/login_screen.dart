@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
                       UiHelper.CustomButtom(callback: (){
-
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
                       }, buttonName: 'Login'),
 
                       Align(
