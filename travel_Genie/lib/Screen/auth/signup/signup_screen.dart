@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_genie/Screen/auth/login/login_screen.dart';
 import 'package:travel_genie/Screen/home/home_Screen.dart';
+import 'package:travel_genie/widgets/bottom_nav_bar.dart';
 import 'package:travel_genie/widgets/helper/colors.dart';
 import 'package:travel_genie/widgets/helper/uihelper.dart';
 import 'package:travel_genie/widgets/widgets.dart';
@@ -151,7 +152,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
                     SizedBox(height: 20,),
                     UiHelper.CustomButtom(callback: (){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BottomNavBar(),));
 
                     }, buttonName: 'Sign Up'),
 
