@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:travel_genie/Screen/auth/auth_Screen.dart';
 import 'package:travel_genie/widgets/helper/colors.dart';
 import 'package:travel_genie/widgets/helper/uihelper.dart';
@@ -36,6 +37,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       'buttonText':'Next'
     },
   ];
+  /// status check
+  Future<void> _completLogin(BuildContext context)async{
+    final prefs=await SharedPreferences.getInstance();
+    await prefs.setBool('isFirstTime', false);
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AuthScreen(),));
+  }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -98,14 +105,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 }
                                 else{
                                   ///Navigation to main app or log in Screen
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AuthScreen(),));
-
+                                  _completLogin(context); //status check to move
                                 }
                               },
                                   buttonName: pages[index]['buttonText'])
-                              // ElevatedButton(onPressed: (){},
-                              //     child: pages[index]['buttonText']
-                              // ),
+
                             )
 
                           ],

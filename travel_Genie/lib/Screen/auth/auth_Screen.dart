@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:travel_genie/Screen/auth/login/login_screen.dart';
 import 'package:travel_genie/Screen/auth/signup/signup_screen.dart';
 import 'package:travel_genie/widgets/helper/colors.dart';
@@ -21,6 +22,18 @@ class _AuthScreenState extends State<AuthScreen> {
       
     }
   ];
+  /// check status login or not
+  Future<void> _login(BuildContext context,String type)async{
+    final prefs=await SharedPreferences.getInstance();
+    await prefs.setBool('isLoggedIn', true);
+
+    if(type =='Login'){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+    }
+    else{
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignupScreen(),));
+    }
+      }
 
   @override
   Widget build(BuildContext context) {
@@ -84,9 +97,8 @@ class _AuthScreenState extends State<AuthScreen> {
                       Row(
                         children: [
                           Expanded(
-                              child: ElevatedButton(onPressed: (){
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
-                              }, child: Text('Login',style: TextStyle(color: ColorConstant.white,fontSize: 15),),
+                              child: ElevatedButton(onPressed: ()=> _login(context, "Login"),
+                               child: Text('Login',style: TextStyle(color: ColorConstant.white,fontSize: 15),),
                                 style: ElevatedButton.styleFrom(backgroundColor: ColorConstant.skyBlue,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(15)
@@ -96,10 +108,8 @@ class _AuthScreenState extends State<AuthScreen> {
                           ),
                           SizedBox(width: 20,),
                           Expanded(
-                              child: ElevatedButton(onPressed: (){
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignupScreen(),));
-
-                              }, child: Text('Sign up',style: TextStyle(color: ColorConstant.black,fontSize: 15),),
+                              child: ElevatedButton(onPressed: ()=> _login(context, 'Sign up'),
+                               child: Text('Sign up',style: TextStyle(color: ColorConstant.black,fontSize: 15),),
                                 style: ElevatedButton.styleFrom(backgroundColor: ColorConstant.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15)

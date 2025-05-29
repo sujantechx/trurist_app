@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:travel_genie/Screen/auth/auth_Screen.dart';
+import 'package:travel_genie/Screen/profile/edit_profile.dart';
 import 'package:travel_genie/widgets/helper/colors.dart';
 import 'package:travel_genie/widgets/helper/uihelper.dart';
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({super.key});
 
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  Future<void> _logOut(BuildContext context)async{
+    final prefs=await SharedPreferences.getInstance();
+    await prefs.setBool('isLoggedIn', false);
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AuthScreen(),));
+  }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -32,27 +45,69 @@ class Profile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12)
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Row(
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                    child: Stack(
                       children: [
-                        Text("dsfdsa")
+                      Positioned(
+                        left: 5,
+                        top: 10,
+                        child: Container(
+                        height: 60,
+                        width: 70,
+                        decoration: BoxDecoration(
+                            // color: ColorConstant.grey,
+                          image: DecorationImage(image: AssetImage('assets/images/sujan.jpg'),fit: BoxFit.cover),
+                            borderRadius: BorderRadius.circular(20)
+                        ),),
+                      ),
+                        SizedBox(width: 20,),
+                        Positioned(
+                          left: 90,
+                          top: 10,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Sujan Sahu",style: TextStyle(
+                                fontFamily: 'PSemiBolds',
+                                fontSize: 20
+                              ),),
+                              UiHelper.CustomTextRegular(textinput: "Edit Profile")
+                            ],
+                          ),
+                        ),
+                        // SizedBox(width: 110,),
+                        Positioned(
+                            right: 5,
+                            bottom: 30,
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfile(),));
+                              },
+                                child: Icon(Icons.arrow_forward_ios)))
                       ],
                     ),
                   ),
                 ),
                 SizedBox(height: 10,),
+                ///cupon
                 Container(
                   height: 70,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      color: ColorConstant.grey,
+                      color:Colors.green,
                       borderRadius: BorderRadius.circular(12)
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Row(
+                    child: Stack(
                       children: [
-                        Text("dsfdsa")
+                        Container(
+                          width: double.infinity,
+                          height: double.infinity,
+                          color: Colors.greenAccent,
+                          child: Center(child: Text("Best deals are her")),
+                        )
                       ],
                     ),
                   ),
@@ -231,6 +286,8 @@ class Profile extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(height: 20,),
+                UiHelper.CustomButtom(callback: ()=>_logOut(context), buttonName: 'Logout')
 
               ],
             ),
