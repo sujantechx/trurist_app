@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_genie/Screen/booking/flights/flight_book.dart';
+import 'package:travel_genie/Screen/booking/hotels/available_hotels.dart';
 import 'package:travel_genie/database/staicdata/top_packages.dart';
 import 'package:travel_genie/widgets/helper/colors.dart';
 import 'package:travel_genie/widgets/helper/uihelper.dart';
@@ -207,7 +208,7 @@ class _HotelsBookState extends State<HotelsBook> {
                             ),
                             SizedBox(height: 15,),
                             UiHelper.CustomButtom(callback: (){
-
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => AvailableHotels(),));
                             }, buttonName: "Search")
                           ],
                         ),
