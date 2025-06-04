@@ -25,5 +25,6 @@ v1.01.7 hotels book profile screen
 v1.01.9 shared Prefaranc
 v1.02.0 edit profile screen
 v1.02.1 add hotels scree and dataset
+v1.02.2 add hotels detell all booking screen
 
 
