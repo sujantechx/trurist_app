@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:travel_genie/Booking/booking_detels.dart';
+import 'package:travel_genie/Hellp%20Support/help_support.dart';
 import 'package:travel_genie/Screen/auth/auth_Screen.dart';
 import 'package:travel_genie/Screen/profile/edit_profile.dart';
+import 'package:travel_genie/Wishlist/wishlist.dart';
 import 'package:travel_genie/widgets/helper/colors.dart';
 import 'package:travel_genie/widgets/helper/uihelper.dart';
 class Profile extends StatefulWidget {
@@ -105,7 +108,9 @@ class _ProfileState extends State<Profile> {
                         Container(
                           width: double.infinity,
                           height: double.infinity,
-                          color: Colors.greenAccent,
+                          decoration: BoxDecoration(
+                              color: Colors.greenAccent,
+                              image: DecorationImage(image: AssetImage('assets/images/truroff.png'),fit: BoxFit.fitWidth)),
                           child: Center(child: Text("Best deals are her")),
                         )
                       ],
@@ -114,70 +119,80 @@ class _ProfileState extends State<Profile> {
                 ),
                 SizedBox(height: 10,),
                 /// Wishlist
-                Container(
-                  height: 60,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: ColorConstant.grey,
-                      borderRadius: BorderRadius.circular(12)
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Stack(
-                      children: [
-                        Center(
-                          child: Row(
-                            children: [
-                              Icon(Icons.favorite_border),
-                              SizedBox(width: 10,),
-                              UiHelper.CustomTextRegular(textinput: "Wishlist"),
-                              // Icon(Icons.arrow_forward_ios),
+                InkWell(
+                  onTap: (){
+                  Navigator.pop(context, MaterialPageRoute(builder: (context) => Wishlist(),));
+                },
+                  child: Container(
+                    height: 60,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: ColorConstant.grey,
+                        borderRadius: BorderRadius.circular(12)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Stack(
+                        children: [
+                          Center(
+                            child: Row(
+                              children: [
+                                Icon(Icons.favorite_border),
+                                SizedBox(width: 10,),
+                                UiHelper.CustomTextRegular(textinput: "Wishlist"),
+                                // Icon(Icons.arrow_forward_ios),
 
 
-                            ],
+                              ],
+                            ),
+
                           ),
-
-                        ),
-                        Positioned(
-                            right: 7,
-                            bottom: 15,
-                            child: Icon(Icons.arrow_forward_ios)
-                        )
-                      ],
+                          Positioned(
+                              right: 7,
+                              bottom: 15,
+                              child: Icon(Icons.arrow_forward_ios)
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
                 SizedBox(height: 10,),
                 ///Bookings
-                Container(
-                  height: 60,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: ColorConstant.grey,
-                      borderRadius: BorderRadius.circular(12)
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Stack(
-                      children: [
-                        Center(
-                          child: Row(
-                            children: [
-                              Icon(Icons.verified_outlined),
-                              SizedBox(width: 10,),
-                              UiHelper.CustomTextRegular(textinput: "Bookings"),
-                              // Icon(Icons.arrow_forward_ios),
+                InkWell(
+                  onTap: (){
+                    Navigator.pop(context, MaterialPageRoute(builder: (context) => BookingDetels(),));
+                  },
+                  child: Container(
+                    height: 60,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: ColorConstant.grey,
+                        borderRadius: BorderRadius.circular(12)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Stack(
+                        children: [
+                          Center(
+                            child: Row(
+                              children: [
+                                Icon(Icons.verified_outlined),
+                                SizedBox(width: 10,),
+                                UiHelper.CustomTextRegular(textinput: "Bookings"),
+                                // Icon(Icons.arrow_forward_ios),
 
-                            ],
+                              ],
+                            ),
+
                           ),
-
-                        ),
-                        Positioned(
-                            right: 7,
-                            bottom: 15,
-                            child: Icon(Icons.arrow_forward_ios)
-                        )
-                      ],
+                          Positioned(
+                              right: 7,
+                              bottom: 15,
+                              child: Icon(Icons.arrow_forward_ios)
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -262,27 +277,29 @@ class _ProfileState extends State<Profile> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Stack(
-                      children: [
-                        Center(
-                          child: Row(
-                            children: [
-                              Icon(Icons.support_agent_outlined),
-                              SizedBox(width: 10,),
-                              UiHelper.CustomTextRegular(textinput: "Helps & Supports"),
-                              // Icon(Icons.arrow_forward_ios),
+                    child: InkWell(onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HelpSupport(),));
+                    },
+                      child: Stack(
+                        children: [
+                          Center(
+                            child: Row(
+                              children: [
+                                Icon(Icons.support_agent_outlined),
+                                SizedBox(width: 10,),
+                                UiHelper.CustomTextRegular(textinput: "Helps & Supports"),
+                                // Icon(Icons.arrow_forward_ios),
+                              ],
+                            ),
 
-
-                            ],
                           ),
-
-                        ),
-                        Positioned(
-                            right: 7,
-                            bottom: 15,
-                            child: Icon(Icons.arrow_forward_ios)
-                        )
-                      ],
+                          Positioned(
+                              right: 7,
+                              bottom: 15,
+                              child: Icon(Icons.arrow_forward_ios)
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
