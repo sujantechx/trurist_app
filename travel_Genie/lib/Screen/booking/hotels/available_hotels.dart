@@ -157,9 +157,8 @@ class _AvailableHotelsState extends State<AvailableHotels> {
                         Expanded(
                           flex: 1,
                           child: InkWell(onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => HotelDetails( hotel:hotel),));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) =>HotelDetails( hotel:hotel),));
                           },
-
                             child: Stack(
                               children: [
                                 Positioned(
