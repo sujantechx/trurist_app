@@ -91,7 +91,7 @@ class _FlightBookState extends State<FlightBook> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         UiHelper.CustomButtomFlex(callback: (){
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HotelsBook(),));
+                          Navigator.pop(context, MaterialPageRoute(builder: (context) => HotelsBook(),));
                         }, buttonName: "Hotels"),
                         SizedBox(width: 30,),
 
