@@ -27,7 +27,7 @@ class _AuthScreenState extends State<AuthScreen> {
     final prefs=await SharedPreferences.getInstance();
     await prefs.setBool('isLoggedIn', true);
 
-    if(type =='Login'){
+    if(type=='Login'){
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
     }
     else{

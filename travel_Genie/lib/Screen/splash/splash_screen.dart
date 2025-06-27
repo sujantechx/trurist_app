@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:travel_genie/Screen/auth/auth_Screen.dart';
-import 'package:travel_genie/Screen/auth/login/login_screen.dart';
-import 'package:travel_genie/Screen/home/home_Screen.dart';
 import 'package:travel_genie/Screen/onbording/onboarding_screen.dart';
 import 'package:travel_genie/widgets/bottom_nav_bar.dart';
 
